@@ -8,7 +8,7 @@
 // Version 1.0.0
 //
 // MIT License;
-// https://github.com/muhammadmuzzammil1998/pagehashgo/LICENSE
+// https://github.com/muhammadmuzzammil1998/pagehash-go/blob/master/LICENSE
 //
 // (c) 2019 Muhammad Muzzammil <email@muzzammil.xyz>
 package pagehash
