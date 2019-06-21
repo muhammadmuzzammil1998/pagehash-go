@@ -1,3 +1,16 @@
+// Package pagehash uses the Page Hash API to return hashes of
+// an online resource.
+//
+// Page Hash: https://pagehash.muzzammil.xyz/
+//
+// Examples can be found here: https://muzzammil.xyz/pagehashgo
+//
+// Version 1.0.0
+//
+// MIT License;
+// https://github.com/muhammadmuzzammil1998/pagehashgo/LICENSE
+//
+// (c) 2019 Muhammad Muzzammil <email@muzzammil.xyz>
 package pagehash
 
 import (
