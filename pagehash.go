@@ -45,3 +45,29 @@ func Get(path string) (*PageHash, error) {
 	}
 	return hash, nil
 }
+
+// GetSHA256 returns the SHA256 hash
+func (r *PageHash) GetSHA256() string {
+	return r.getHash("sha256")
+}
+
+// GetSHA1 returns the SHA1 hash
+func (r *PageHash) GetSHA1() string {
+	return r.getHash("sha1")
+}
+
+// GetMD5 returns the MD5 hash
+func (r *PageHash) GetMD5() string {
+	return r.getHash("md5")
+}
+
+func (r *PageHash) getHash(hashType string) string {
+	var retval string
+	for _, hash := range r.Hashes {
+		if hash.Algorithm == hashType {
+			retval = hash.Hash
+			break
+		}
+	}
+	return retval
+}
