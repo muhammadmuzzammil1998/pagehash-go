@@ -5,7 +5,7 @@
 //
 // Examples can be found here: https://muzzammil.xyz/pagehashgo
 //
-// Version 1.0.0
+// Version 1.0.1
 //
 // MIT License;
 // https://github.com/muhammadmuzzammil1998/pagehash-go/blob/master/LICENSE
@@ -53,8 +53,11 @@ func Get(path string) (*PageHash, error) {
 		return nil, err
 	}
 	if len(hash.Hashes) == 0 {
-		resp, _ := http.Get(path)
-		return nil, errors.New("Unable to generate hashes. Path status: " + resp.Status)
+		e := "Unable to generate hashes"
+		if resp, err := http.Get(path); err == nil {
+			e += ", Path status: " + resp.Status
+		}
+		return nil, errors.New(e)
 	}
 	return hash, nil
 }
@@ -76,6 +79,9 @@ func (r *PageHash) GetMD5() string {
 
 func (r *PageHash) getHash(hashType string) string {
 	var retval string
+	if r == nil {
+		return ""
+	}
 	for _, hash := range r.Hashes {
 		if hash.Algorithm == hashType {
 			retval = hash.Hash
